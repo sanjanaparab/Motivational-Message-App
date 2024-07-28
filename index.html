@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivational Message by sanjana </title>
+    <style>
+        *{font-size:50px; font-family: calibri;}
+        h2{width:70%; border-radius:30px; border:solid; }
+        body{background-image:linear-gradient(to right, rgb(255, 179, 0),lightpink,yellow)}
+        
+        h1{
+            background-color: (lightskyblue);
+        }
+        
+        h1{
+            border-style:groove;
+            
+        }
+        h2{
+            border-style: groove;
+            text-decoration-color: rgb(246, 250, 215);
+        }
+        input{background-color:rgb(222, 166, 135);}
+
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Motivational Message App </h1>
+    
+    <form onsubmit="show()">
+        <input type="submit" value="Get Msg"/>
+
+    </form>
+    <h2 id="msg"></h2>
+    <h2 id="aut"></h2>
+    <script>
+        function show()
+        {
+            event.preventDefault();
+            let msg = document.getElementById("msg");
+            let aut = document.getElementById("aut");
+            let url ="https://quotes-api-self.vercel.app/quote";
+            fetch(url)
+            .then(res=>res.json())
+            .then(data=>{
+                msg.innerHTML=data.quote;
+                aut.innerHTML=data.author;
+            })
+            .catch(err=>msg.innerHTML="issue"+err);
+            
+        }
+        
+    </script>
+    </center>
+    
+</body>
+</html>
